@@ -2,5 +2,20 @@
 src = "src"
 out = "out"
 libs = ["lib"]
+remappings = ["@chainlink/contracts/=lib/chainlink-brownie-contracts/contracts/"]
+
+# ffi = true
+
+fs_permissions = [
+    { access = "read", path = "./broadcast" },
+    { access = "read", path = "./reports" },
+]
+
+test = "test/unit"
+
+#https://sepolia.era.zksync.dev
+
+# zkSync-specific settings
+rpc_url = "https://zksync-era-testnet.rpc.thirdweb.com"  # Update to an active zkSync RPC
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
