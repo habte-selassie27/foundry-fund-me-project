@@ -25,13 +25,13 @@ contract FundMe {
         s_priceFeed = AggregatorV3Interface(priceFeed); 
     }
 
-    function fund() public payable {
+    function fund(uint256 amount) public payable {
         require(
           msg.value.getConversionRate(s_priceFeed) >= MINIMUM_USD, 
           "You need to spend more ETH!"
         );
         // require(PriceConverter.getConversionRate(msg.value) >= MINIMUM_USD, "You need to spend more ETH!");
-        s_addressToAmountFunded[msg.sender] += msg.value;
+        s_addressToAmountFunded[msg.sender] += amount;
         s_funders.push(msg.sender);
     }
 
@@ -91,11 +91,11 @@ contract FundMe {
     //receive()  fallback()
 
     fallback() external payable {
-        fund();
+        fund(111);
     }
 
     receive() external payable {
-        fund();
+        fund(111);
     }
 
     /**
